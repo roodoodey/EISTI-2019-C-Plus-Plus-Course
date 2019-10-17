@@ -14,17 +14,41 @@ using namespace std;
  In this program we will look at input and multiway if, else if,
  and else statements with an external function which will give a grade
  based on the input value. We will then use the grade to print out different
- information about the student with a switch statement.
+ information based on the grade of the student with a switch statement.
  */
+
+
+/***********************************
+ *********** ENUMERATORS ***********
+ ***********************************/
+
+/**
+ An enum is a type which holds values of type int
+ in a human readable manner. In this case A=0, B=1
+ etc. We can initialize A=10, and then B=11. If we
+ initialize A=10, B=1, then C=2 automatically if
+ we do not provide a value.
+ */
+enum Grade {
+    A,
+    B,
+    C,
+    D,
+    F
+};
+
+/*********************************
+ *********** FUNCTIONS ***********
+**********************************/
 
 /*
  Function declaration so the compiler knows this function exists.
  This function takes the first parameter points which indicates the points
  the user scored on the exam. The total points is the number of points available
- in total in the exam. Based on this we will return a grade on the scale of A-F
- as a char (ASCII characters).
+ in total in the exam. Based on this we will return a Grade enumeration object
+ on the scale of A-F.
  */
-char grade(int points, int totalPoints);
+Grade grade(int points, int totalPoints);
 
 /*
  Calculates the percentatge score based on the points of the student scored divided
@@ -54,42 +78,44 @@ int main(int argc, const char * argv[]) {
     // Add a check here if the total exam points are zero.
     // As we cannot divide by zero.
     
-    char studentGrade = grade(studentPoints, totalExamPoints);
+    Grade studentGrade = grade(studentPoints, totalExamPoints);
+    cout << "What is the enum value: " << studentGrade << endl;
     
     // Print different information depending on the grade of the statement
     // Switch only works with integer types and enums.
     switch (studentGrade) {
-        case 'A':
+        case Grade::A:
             
-            cout << "You are a great student! You got an " << studentGrade << " on the exam" << endl;
+            cout << "You are a great student! You got an A on the exam" << endl;
             
             // If there is no break statement which stops the current control flow
             // then it will keep outputting the statements in the next cases.
             break;
             
-        case 'B':
+        case Grade::B:
             
-            cout << "You are a good student! You got a " << studentGrade << " on the exam" << endl;
-            
-            break;
-            
-        case 'C':
-            
-            cout << "You can do better... You got a " << studentGrade << " on the exam" << endl;
+            cout << "You are a good student! You got a B on the exam" << endl;
             
             break;
             
-        case 'D':
+        case Grade::C:
+            
+            cout << "You can do better... You got a C on the exam" << endl;
+            
+            break;
+            
+        case Grade::D:
             
             cout << "You are not in the worst bracket... but not far." << endl;
             
-        case 'F':
+        case Grade::F:
             
             cout << "You need help! ASAP." << endl;
             
             break;
             
         default:
+            // Runs if it does not find any other case above.
             break;
     }
     
@@ -102,25 +128,25 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-char grade(int points, int totalPoints) {
+Grade grade(int points, int totalPoints) {
     
     double gradePerc = percentage(points, totalPoints);
 
     if (gradePerc >= 90) {
         
-        return 'A';
+        return Grade::A;
     } else if (gradePerc >= 80 && gradePerc < 90) {
         
-        return 'B';
+        return Grade::B;
     } else if (gradePerc >= 70 && gradePerc < 80) {
         
-        return 'C';
+        return Grade::C;
     } else if (gradePerc >= 60 && gradePerc < 70) {
         
-        return 'D';
+        return Grade::D;
     } else {
         
-        return 'F';
+        return Grade::F;
     }
     
     // This should never execute as our control statement above ends with an else statement
