@@ -26,17 +26,21 @@ int main(int argc, const char * argv[]) {
 
 bool hasQuit() {
     
-    cout << "Do you want to quit (y/n)?";
+    cout << "Do you want to quit (y/n)? ";
     
     string character;
     cin >> character;
+    // What happens if you uncomment this line? Why do we needs this?
+    // hint: it has something to do with the newline character.
+    // discussion here: https://stackoverflow.com/questions/5877420/c-cin-input-not-working
+    cin.ignore();
     
     if (character == "y") {
         
         return true;
     } else if (character == "n") {
         
-        return true;
+        return false;
     }
     
     cout << "Illegal input: " << character << endl;
