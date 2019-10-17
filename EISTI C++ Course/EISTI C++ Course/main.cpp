@@ -28,7 +28,14 @@ int main(int argc, const char * argv[]) {
     // The price reducation the user gets
     double reduction;
     
+    // To make the outpout show a dot and 2 fractional characters
+    // for doubles
+    cout.setf(ios::showpoint);
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    
     cout << "Input how much you are willing to spend: ";
+    
     cin >> spending;
     
     if (spending < 10) {
