@@ -35,7 +35,7 @@ Operation computerOperation();
 Result won(Operation operationOne, Operation operationTwo);
 void printOp(Operation op);
 void printResult(Result result);
-void printRoundResult(Result result, Operation userOp, Operation computerOp, int playerWon, int computerWon, int numTies);
+void printRoundResult(Result result, Operation userOp, Operation computerOp, int roundResult, int playerWon, int computerWon, int numTies);
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -51,8 +51,6 @@ int main(int argc, const char * argv[]) {
     
     do {
         
-        cout << "Round Number: " << roundNumber << endl;
-        
         Operation userOp = userOperation();
         Operation computerOp = computerOperation();
         
@@ -66,7 +64,8 @@ int main(int argc, const char * argv[]) {
             computerWon++;
         }
         
-        printRoundResult(userWon, userOp, computerOp, playerWon, computerWon, numTies);
+        cout << endl;
+        printRoundResult(userWon, userOp, computerOp, roundNumber, playerWon, computerWon, numTies);
         
         roundNumber++;
         
@@ -168,14 +167,15 @@ Result won(Operation operationOne, Operation operationTwo) {
     return Result::Lost;
 }
 
-void printRoundResult(Result result, Operation userOp, Operation computerOp, int playerWon, int computerWon, int numTies) {
+void printRoundResult(Result result, Operation userOp, Operation computerOp, int roundNumber, int playerWon, int computerWon, int numTies) {
     
+    cout << "Round number: " << roundNumber << endl;
     printOp(userOp);
     cout << " vs. ";
     printOp(computerOp);
-    cout << endl << endl;
-    
+    cout << ". ";
     printResult(result);
+    cout << endl;
     
     // Print stats with other functions.
     
