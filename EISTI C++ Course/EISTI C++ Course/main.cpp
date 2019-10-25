@@ -146,10 +146,10 @@ Operation userOperation() {
 
 Operation computerOperation() {
     
-    Operation availableOperations[3] = { Rock, Paper, Scissor };
+    Operation availableOperations[5] = { Rock, Paper, Scissor, Lizard, Spock };
     
-    // Gives a random value from 0 - 2
-    int randomIndex = rand() % 3;
+    // Gives a random value from 0 - 4
+    int randomIndex = rand() % 5;
     
     return availableOperations[randomIndex];
     
