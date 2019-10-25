@@ -45,8 +45,12 @@ Operation computerOperation();
 Result won(Operation operationOne, Operation operationTwo);
 void printOp(Operation op);
 void printResult(Result result);
+
+/* Copies the ctor passed in and prints the round number. */
 void printRoundResult(vector<RoundHistory> vec, int roundNumber);
 double percentage(double valueOne, double valueTwo);
+
+/** Creates a round History Struct element **/
 RoundHistory createHistoryDataPoint(Operation userOp, Operation computerOp, Result res);
 
 int numUserResults(vector<RoundHistory> vec, Result result);
@@ -271,28 +275,4 @@ RoundHistory createHistoryDataPoint(Operation userOp, Operation computerOp, Resu
     history.userResult = res;
     
     return history;
-}
-
-RoundHistory * createHistoryArray(RoundHistory *arrayToCopy, RoundHistory dataPoint, int numValues) {
-    
-    // Creates a new empty array with RoundHistory struct type with the
-    // same size as the num values
-    RoundHistory *list = new RoundHistory[numValues];
-    
-    // We first need to copy the old array into the new one so we do
-    // not exceed its size and cause a SIGTERM where we access memory
-    // which is not ours.
-    
-    // Our previous array is one shorter than the one we are adding to
-    // So we need to make sure not to have an off by one error
-    for (int i = 0; i < numValues - 1; i++) {
-        // Copy every element in array to copy
-        list[i] = arrayToCopy[i];
-    }
-    
-    // Decrease by one as arrays are zero indexed
-    // Assing the new data point.
-    list[numValues - 1] = dataPoint;
-    
-    return list;
 }
