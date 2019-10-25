@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include <vector>
 using namespace std;
 
 
@@ -44,11 +45,11 @@ Operation computerOperation();
 Result won(Operation operationOne, Operation operationTwo);
 void printOp(Operation op);
 void printResult(Result result);
-void printRoundResult(RoundHistory *gameHistory, int roundNumber);
+void printRoundResult(vector<RoundHistory> vec, int roundNumber);
 double percentage(double valueOne, double valueTwo);
 RoundHistory createHistoryDataPoint(Operation userOp, Operation computerOp, Result res);
-RoundHistory * createHistoryArray(RoundHistory *listToCopy, RoundHistory newDataPoint, int numValues);
-int numUserResults(RoundHistory *history, Result result, int numValues);
+
+int numUserResults(vector<RoundHistory> vec, Result result);
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -60,7 +61,11 @@ int main(int argc, const char * argv[]) {
     
     // print the rules at the beginning
     printRules();
-    RoundHistory *historyArray = nullptr;
+    
+    // When declaring a vector it will use the default initializer for it
+    // With an empty list of elements
+    
+    vector<RoundHistory> history;
     
     do {
         
@@ -73,11 +78,12 @@ int main(int argc, const char * argv[]) {
         
         // Create a datapoint for the new round
         RoundHistory dataPoint = createHistoryDataPoint(userOp, computerOp, userWon);
-        
-        historyArray = createHistoryArray(historyArray, dataPoint, roundNumber);
+        // Adds an element at the end of the list. It handles resizing the array for us.
+        // No need to copy it and play with pointers.
+        history.push_back(dataPoint);
         
         cout << endl;
-        printRoundResult(historyArray, roundNumber);
+        printRoundResult(history, roundNumber);
         
     } while ( playAgain() == true );
     
@@ -191,9 +197,9 @@ Result won(Operation operationOne, Operation operationTwo) {
     return Won;
 }
 
-void printRoundResult(RoundHistory *playerHistory, int roundNumber) {
+void printRoundResult(vector<RoundHistory> vec, int roundNumber) {
     
-    const RoundHistory lastRound = playerHistory[roundNumber - 1];
+    const RoundHistory lastRound = vec[roundNumber - 1];
     
     cout << "Round number: " << roundNumber << endl;
     printOp(lastRound.userOperation);
@@ -204,9 +210,9 @@ void printRoundResult(RoundHistory *playerHistory, int roundNumber) {
     cout << endl;
     
     // Print stats with other functions.
-    cout << "The user win percentage: " << percentage(numUserResults(playerHistory, Won, roundNumber), roundNumber) << "%" << endl;
-    cout << "The computer win percentage: " << percentage(numUserResults(playerHistory, Lost, roundNumber), roundNumber) << "%" << endl;
-    cout << "Number of ties: " << percentage(numUserResults(playerHistory, Tie, roundNumber), roundNumber) << "%" << endl;
+    cout << "The user win percentage: " << percentage(numUserResults(vec, Won), roundNumber) << "%" << endl;
+    cout << "The computer win percentage: " << percentage(numUserResults(vec, Lost), roundNumber) << "%" << endl;
+    cout << "Number of ties: " << percentage(numUserResults(vec, Tie), roundNumber) << "%" << endl;
     
 }
 
@@ -238,12 +244,12 @@ void printOp(Operation op) {
     
 }
 
-int numUserResults(RoundHistory *history, Result result, int numValues) {
+int numUserResults(vector<RoundHistory> vec, Result result) {
     
     int value = 0;
     
-    for (int i = 0; i < numValues; i++) {
-        const RoundHistory point = history[i];
+    for (int i = 0; i < vec.size(); i++) {
+        const RoundHistory point = vec[i];
         if (point.userResult == result) {
             value++;
         }
