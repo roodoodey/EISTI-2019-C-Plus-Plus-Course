@@ -33,6 +33,11 @@ class Operation {
 public:
     
     /*
+     Default constructor creates the Operation with type of rock.
+     */
+    Operation();
+    
+    /*
      Constructor for an operation where we take a string to create the class.
      */
     Operation(std::string opString);

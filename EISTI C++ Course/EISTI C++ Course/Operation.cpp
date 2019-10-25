@@ -53,6 +53,10 @@ Operation Operation::randOperation() {
  Constructors
  */
 
+Operation::Operation() {
+    this->type = OperationTypeRock;
+}
+
 Operation::Operation(std::string opString) {
     this->type = Operation::operationType(opString);
 }
