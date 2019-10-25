@@ -76,15 +76,24 @@ OperationResult Operation::won(Operation op) {
         
     } else if (type == OperationTypeScissors) {
         
-        
+        if (op.type == OperationTypeRock || op.type == OperationTypeSpock) {
+            
+            return OperationResultLost;
+        }
         
     } else if (type == OperationTypeLizard) {
         
-        
+        if (op.type == OperationTypeScissors || op.type == OperationTypeRock) {
+            
+            return OperationResultLost;
+        }
         
     } else if (type == OperationTypeSpock) {
         
-        
+        if (op.type == OperationTypePaper || op.type == OperationTypeLizard) {
+            
+            return OperationResultLost;
+        }
         
     }
     
