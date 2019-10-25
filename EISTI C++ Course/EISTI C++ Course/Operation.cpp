@@ -25,6 +25,8 @@ void Operation::outputOperation() {
         cout << "Lizard";
     } else if (type == OperationTypeSpock) {
         cout << "Spock";
+    } else if (type == OperationTypeUnknown) {
+        cout << "Unknown";
     }
     
 }
@@ -48,6 +50,11 @@ void Operation::outputShortOperation() {
 }
 
 OperationResult Operation::won(Operation op) {
+    
+    if (type == OperationTypeUnknown || op.type == OperationTypeUnknown) {
+        // We should thrown an error
+        throw std::invalid_argument( "Cannot compare an unkown operation with" );
+    }
     
     if (type == op.type) {
         return OperationResultTie;

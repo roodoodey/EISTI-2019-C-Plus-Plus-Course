@@ -10,6 +10,8 @@
 #define Operation_hpp
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string>
 
 typedef enum {
     OperationResultWon,
@@ -22,12 +24,20 @@ typedef enum {
     OperationTypePaper,
     OperationTypeScissors,
     OperationTypeLizard,
-    OperationTypeSpock
+    OperationTypeSpock,
+    OperationTypeUnknown
 } OperationType;
 
 class Operation {
     
 public:
+    
+    /*
+     This is a static method which means we can invoke it without having to create
+     An operation object. This will give us the operation type from a string.
+     */
+    static OperationType operationType(std::string opString);
+    
     /*
      Checks whether the current operation wins against the passed in operation.
      */
