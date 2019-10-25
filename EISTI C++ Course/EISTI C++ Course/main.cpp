@@ -9,6 +9,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 using namespace std;
 
 
@@ -16,17 +17,17 @@ using namespace std;
  Class enumerators are slightly different from normal enumerators.
  They are not integers and can only be compard with Operation enumerators.
  */
-enum class Operation {
+typedef enum {
     Rock,
     Paper,
     Scissor
-};
+} Operation;
 
-enum class Result {
+typedef enum {
     Won,
     Tie,
     Lost
-};
+} Result;
 
 bool playAgain();
 void printRules();
@@ -40,6 +41,9 @@ void printRoundResult(Result result, Operation userOp, Operation computerOp, int
 int main(int argc, const char * argv[]) {
     // insert code here...
     
+    // Initialize the random generator
+    srand(time(NULL));
+
     int roundNumber = 1;
     
     int playerWon = 0;
@@ -56,11 +60,11 @@ int main(int argc, const char * argv[]) {
         
         // Checks if the user won
         Result userWon = won(userOp, computerOp);
-        if (userWon == Result::Tie) {
+        if (userWon == Tie) {
             numTies++;
-        } else if (userWon == Result::Won) {
+        } else if (userWon == Won) {
             playerWon++;
-        } else if (userWon == Result::Lost) {
+        } else if (userWon == Lost) {
             computerWon++;
         }
         
@@ -118,13 +122,13 @@ Operation userOperation() {
     
     if (stringOperation == "r" || stringOperation == "R") {
         
-        return Operation::Rock;
+        return Rock;
     } else if (stringOperation == "p" || stringOperation == "P") {
         
-        return Operation::Paper;
+        return Paper;
     } else if (stringOperation == "s" || stringOperation == "S") {
         
-        return Operation::Scissor;
+        return Scissor;
     }
     
     cout << "Illegal input " << stringOperation << " try again." << endl;
@@ -134,10 +138,10 @@ Operation userOperation() {
 
 Operation computerOperation() {
     
-    Operation availableOperations[3] = { Operation::Rock, Operation::Paper, Operation::Scissor };
+    Operation availableOperations[3] = { Rock, Paper, Scissor };
     
     // Gives a random value from 0 - 2
-    int randomIndex = arc4random_uniform(3);
+    int randomIndex = rand() % 3;
     
     return availableOperations[randomIndex];
     
@@ -146,25 +150,25 @@ Operation computerOperation() {
 Result won(Operation operationOne, Operation operationTwo) {
     
     if (operationOne == operationTwo) {
-        return Result::Tie;
+        return Tie;
     }
     
-    if (operationOne == Operation::Rock) {
-        if (operationTwo == Operation::Paper) {
-            return Result::Won;
+    if (operationOne == Rock && operationTwo == Paper) {
+        if (operationTwo == Paper) {
+            return Won;
         }
-    } else if (operationOne == Operation::Paper) {
-        if (operationTwo == Operation::Scissor) {
-            return Result::Won;
+    } else if (operationOne == Paper) {
+        if (operationTwo == Scissor) {
+            return Won;
         }
-    } else if (operationOne == Operation::Scissor) {
-        if (operationTwo == Operation::Paper) {
-            return Result::Won;
+    } else if (operationOne == Scissor) {
+        if (operationTwo == Paper) {
+            return Won;
         }
     }
     
     // We have exhausted all posibilities so we know we win.
-    return Result::Lost;
+    return Lost;
 }
 
 void printRoundResult(Result result, Operation userOp, Operation computerOp, int roundNumber, int playerWon, int computerWon, int numTies) {
@@ -183,11 +187,11 @@ void printRoundResult(Result result, Operation userOp, Operation computerOp, int
 
 void printResult(Result result) {
     
-    if (result == Result::Won) {
+    if (result == Won) {
         cout << "You won! Yayyy!" << endl;
-    } else if (result == Result::Lost) {
+    } else if (result == Lost) {
         cout << "You Lost! Better luck next time :)" << endl;
-    } else if (result == Result::Tie) {
+    } else if (result == Tie) {
         cout << "It's a tie!" << endl;
     }
     
@@ -195,11 +199,11 @@ void printResult(Result result) {
 
 void printOp(Operation op) {
     
-    if (op == Operation::Rock) {
+    if (op == Rock) {
         cout << "Rock";
-    } else if (op == Operation::Paper) {
+    } else if (op == Paper) {
         cout << "Paper";
-    } else if (op == Operation::Scissor) {
+    } else if (op == Scissor) {
         cout << "Scissor";
     }
     
