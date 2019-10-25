@@ -20,7 +20,9 @@ using namespace std;
 typedef enum {
     Rock,
     Paper,
-    Scissor
+    Scissor,
+    Lizard,
+    Spock
 } Operation;
 
 typedef enum {
@@ -113,7 +115,7 @@ bool playAgain() {
 
 Operation userOperation() {
     
-    cout << "Choose between Rock (r/R), Paper (p/P) or Scissors (s/S): " << endl;
+    cout << "Choose between Rock (r/R), Paper (p/P), Scissors (s/S), Lizard (l/L), Spock (sp/Sp/SP): " << endl;
     
     string stringOperation;
     
@@ -129,6 +131,11 @@ Operation userOperation() {
     } else if (stringOperation == "s" || stringOperation == "S") {
         
         return Scissor;
+    } else if (stringOperation == "l" || stringOperation == "L") {
+        
+        return Lizard;
+    } else if (stringOperation == "sp" || stringOperation == "Sp" || stringOperation == "SP") {
+        return Spock;
     }
     
     cout << "Illegal input " << stringOperation << " try again." << endl;
@@ -154,15 +161,23 @@ Result won(Operation operationOne, Operation operationTwo) {
     }
     
     if (operationOne == Rock) {
-        if (operationTwo == Paper) {
+        if (operationTwo == Paper || operationTwo == Spock) {
             return Lost;
         }
     } else if (operationOne == Paper) {
-        if (operationTwo == Scissor) {
+        if (operationTwo == Scissor || operationTwo == Lizard) {
             return Lost;
         }
     } else if (operationOne == Scissor) {
-        if (operationTwo == Rock) {
+        if (operationTwo == Rock || operationTwo == Spock) {
+            return Lost;
+        }
+    } else if (operationOne == Lizard) {
+        if (operationTwo == Rock || operationTwo == Scissor) {
+            return Lost;
+        }
+    } else if (operationOne == Spock) {
+        if (operationTwo == Paper || operationTwo == Lizard) {
             return Lost;
         }
     }
@@ -205,6 +220,10 @@ void printOp(Operation op) {
         cout << "Paper";
     } else if (op == Scissor) {
         cout << "Scissor";
+    } else if (op == Lizard) {
+        cout << "Lizard";
+    } else if (op == Spock) {
+        cout << "Spock";
     }
     
 }
