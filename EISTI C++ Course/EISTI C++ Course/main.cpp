@@ -39,6 +39,7 @@ Result won(Operation operationOne, Operation operationTwo);
 void printOp(Operation op);
 void printResult(Result result);
 void printRoundResult(Result result, Operation userOp, Operation computerOp, int roundResult, int playerWon, int computerWon, int numTies);
+double percentage(double valueOne, double valueTwo);
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -197,6 +198,9 @@ void printRoundResult(Result result, Operation userOp, Operation computerOp, int
     cout << endl;
     
     // Print stats with other functions.
+    cout << "The user win percentage: " << percentage(playerWon, roundNumber) << "%" << endl;
+    cout << "The computer win percentage: " << percentage(computerWon, roundNumber) << "%" << endl;
+    cout << "Number of ties: " << percentage(numTies, roundNumber) << "%" << endl;
     
 }
 
@@ -226,4 +230,9 @@ void printOp(Operation op) {
         cout << "Spock";
     }
     
+}
+
+double percentage(double valueOne, double valueTwo) {
+    
+    return valueOne / valueTwo * 100;
 }
