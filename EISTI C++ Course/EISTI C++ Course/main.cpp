@@ -31,6 +31,12 @@ typedef enum {
     Lost
 } Result;
 
+typedef struct {
+    Operation userOperation;
+    Operation computerOperation;
+    Result userResult;
+} RoundHistory;
+
 bool playAgain();
 void printRules();
 Operation userOperation();
@@ -38,8 +44,11 @@ Operation computerOperation();
 Result won(Operation operationOne, Operation operationTwo);
 void printOp(Operation op);
 void printResult(Result result);
-void printRoundResult(Result result, Operation userOp, Operation computerOp, int roundResult, int playerWon, int computerWon, int numTies);
+void printRoundResult(RoundHistory *gameHistory, int roundNumber);
 double percentage(double valueOne, double valueTwo);
+RoundHistory createHistoryDataPoint(Operation userOp, Operation computerOp, Result res);
+RoundHistory * createHistoryArray(RoundHistory *listToCopy, RoundHistory newDataPoint, int numValues);
+int numUserResults(RoundHistory *history, Result result, int numValues);
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -47,36 +56,31 @@ int main(int argc, const char * argv[]) {
     // Initialize the random generator
     srand(time(NULL));
 
-    int roundNumber = 1;
-    
-    int playerWon = 0;
-    int computerWon = 0;
-    int numTies = 0;
+    int roundNumber = 0;
     
     // print the rules at the beginning
     printRules();
+    RoundHistory *historyArray = nullptr;
     
     do {
         
-        Operation userOp = userOperation();
-        Operation computerOp = computerOperation();
-        
-        // Checks if the user won
-        Result userWon = won(userOp, computerOp);
-        if (userWon == Tie) {
-            numTies++;
-        } else if (userWon == Won) {
-            playerWon++;
-        } else if (userWon == Lost) {
-            computerWon++;
-        }
-        
-        cout << endl;
-        printRoundResult(userWon, userOp, computerOp, roundNumber, playerWon, computerWon, numTies);
-        
+        // Increment the round Number so we start at 1
         roundNumber++;
         
+        Operation userOp = userOperation();
+        Operation computerOp = computerOperation();
+        Result userWon = won(userOp, computerOp);
+        
+        // Create a datapoint for the new round
+        RoundHistory dataPoint = createHistoryDataPoint(userOp, computerOp, userWon);
+        
+        historyArray = createHistoryArray(historyArray, dataPoint, roundNumber);
+        
+        cout << endl;
+        printRoundResult(historyArray, roundNumber);
+        
     } while ( playAgain() == true );
+    
     
     
     return 0;
@@ -146,10 +150,10 @@ Operation userOperation() {
 
 Operation computerOperation() {
     
-    Operation availableOperations[3] = { Rock, Paper, Scissor };
+    Operation availableOperations[5] = { Rock, Paper, Scissor, Lizard, Spock };
     
-    // Gives a random value from 0 - 2
-    int randomIndex = rand() % 3;
+    // Gives a random value from 0 - 4
+    int randomIndex = rand() % 5;
     
     return availableOperations[randomIndex];
     
@@ -187,20 +191,22 @@ Result won(Operation operationOne, Operation operationTwo) {
     return Won;
 }
 
-void printRoundResult(Result result, Operation userOp, Operation computerOp, int roundNumber, int playerWon, int computerWon, int numTies) {
+void printRoundResult(RoundHistory *playerHistory, int roundNumber) {
+    
+    const RoundHistory lastRound = playerHistory[roundNumber - 1];
     
     cout << "Round number: " << roundNumber << endl;
-    printOp(userOp);
+    printOp(lastRound.userOperation);
     cout << " vs. ";
-    printOp(computerOp);
+    printOp(lastRound.computerOperation);
     cout << ". ";
-    printResult(result);
+    printResult(lastRound.userResult);
     cout << endl;
     
     // Print stats with other functions.
-    cout << "The user win percentage: " << percentage(playerWon, roundNumber) << "%" << endl;
-    cout << "The computer win percentage: " << percentage(computerWon, roundNumber) << "%" << endl;
-    cout << "Number of ties: " << percentage(numTies, roundNumber) << "%" << endl;
+    cout << "The user win percentage: " << percentage(numUserResults(playerHistory, Won, roundNumber), roundNumber) << "%" << endl;
+    cout << "The computer win percentage: " << percentage(numUserResults(playerHistory, Lost, roundNumber), roundNumber) << "%" << endl;
+    cout << "Number of ties: " << percentage(numUserResults(playerHistory, Tie, roundNumber), roundNumber) << "%" << endl;
     
 }
 
@@ -232,7 +238,55 @@ void printOp(Operation op) {
     
 }
 
+int numUserResults(RoundHistory *history, Result result, int numValues) {
+    
+    int value = 0;
+    
+    for (int i = 0; i < numValues; i++) {
+        const RoundHistory point = history[i];
+        if (point.userResult == result) {
+            value++;
+        }
+    }
+    
+    return value;
+}
+
 double percentage(double valueOne, double valueTwo) {
     
     return valueOne / valueTwo * 100;
+}
+
+RoundHistory createHistoryDataPoint(Operation userOp, Operation computerOp, Result res) {
+    
+    RoundHistory history;
+    history.userOperation = userOp;
+    history.computerOperation = computerOp;
+    history.userResult = res;
+    
+    return history;
+}
+
+RoundHistory * createHistoryArray(RoundHistory *arrayToCopy, RoundHistory dataPoint, int numValues) {
+    
+    // Creates a new empty array with RoundHistory struct type with the
+    // same size as the num values
+    RoundHistory *list = new RoundHistory[numValues];
+    
+    // We first need to copy the old array into the new one so we do
+    // not exceed its size and cause a SIGTERM where we access memory
+    // which is not ours.
+    
+    // Our previous array is one shorter than the one we are adding to
+    // So we need to make sure not to have an off by one error
+    for (int i = 0; i < numValues - 1; i++) {
+        // Copy every element in array to copy
+        list[i] = arrayToCopy[i];
+    }
+    
+    // Decrease by one as arrays are zero indexed
+    // Assing the new data point.
+    list[numValues - 1] = dataPoint;
+    
+    return list;
 }
