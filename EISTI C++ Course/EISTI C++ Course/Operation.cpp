@@ -10,6 +10,22 @@
 // Have to include iostream to be able to use cout
 #include <iostream>
 
+OperationType Operation::operationType(std::string opTypeString) {
+    
+    if (opTypeString == "r" || opTypeString == "R") {
+        return OperationTypeRock;
+    } else if (opTypeString == "p" || opTypeString == "P") {
+        return OperationTypePaper;
+    } else if (opTypeString == "s" || opTypeString == "S") {
+        return OperationTypeScissors;
+    } else if (opTypeString == "l" || opTypeString == "L") {
+        return OperationTypeLizard;
+    } else if (opTypeString == "sp" || opTypeString == "Sp" || opTypeString == "SP") {
+        return OperationTypeSpock;
+    }
+    
+    return OperationTypeUnknown;
+}
 
 void Operation::outputOperation() {
     
