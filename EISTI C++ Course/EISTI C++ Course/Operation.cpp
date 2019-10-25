@@ -9,6 +9,11 @@
 #include "Operation.hpp"
 // Have to include iostream to be able to use cout
 #include <iostream>
+#include <time.h>
+
+/*
+ Static methods
+ */
 
 OperationType Operation::operationType(std::string opTypeString) {
     
@@ -27,7 +32,39 @@ OperationType Operation::operationType(std::string opTypeString) {
     return OperationTypeUnknown;
 }
 
-void Operation::outputOperation() {
+OperationType Operation::randOperationType() {
+    
+    srand( time(NULL) );
+    
+    OperationType operations[5] = { OperationTypeRock, OperationTypePaper, OperationTypeScissors, OperationTypeLizard, OperationTypeSpock};
+    
+    int randIndex = rand() % 5;
+    
+    return operations[randIndex];
+    
+}
+
+Operation Operation::randOperation() {
+    
+    return Operation( Operation::randOperationType() );
+}
+
+/*
+ Constructors
+ */
+
+Operation::Operation(std::string opString) {
+    this->type = Operation::operationType(opString);
+}
+
+Operation::Operation(OperationType type) {
+    this->type = type;
+}
+
+/*
+ Member functions
+ */
+void Operation::printOperation() {
     
     using namespace std;
     
@@ -47,7 +84,7 @@ void Operation::outputOperation() {
     
 }
 
-void Operation::outputShortOperation() {
+void Operation::printShortOperation() {
     
     using namespace std;
     
@@ -61,6 +98,21 @@ void Operation::outputShortOperation() {
         cout << "(l/L)";
     } else if (type == OperationTypeSpock) {
         cout << "(sp/Sp/SP)";
+    }
+    
+}
+
+void Operation::printResult(Operation op) {
+    
+    using namespace std;
+    
+    OperationResult res = won(op);
+    if (res == OperationResultWon) {
+        cout << "You won! Yayyy!" << endl;
+    } else if (res == OperationResultLost) {
+        cout << "You Lost! Better luck next time :)" << endl;
+    } else if (res == OperationResultTie) {
+        cout << "It's a tie!" << endl;
     }
     
 }
