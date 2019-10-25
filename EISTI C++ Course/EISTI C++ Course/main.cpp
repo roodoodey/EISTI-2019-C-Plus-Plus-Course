@@ -4,7 +4,7 @@
 //
 //  Created by Mathieu MBP 13 on 17/10/2019.
 //  Copyright © 2019 Mathieu MBP 13. All rights reserved.
-//
+// mathieu@floweducation.io
 
 #include <iostream>
 #include <stdlib.h>
@@ -153,22 +153,22 @@ Result won(Operation operationOne, Operation operationTwo) {
         return Tie;
     }
     
-    if (operationOne == Rock && operationTwo == Paper) {
+    if (operationOne == Rock) {
         if (operationTwo == Paper) {
-            return Won;
+            return Lost;
         }
     } else if (operationOne == Paper) {
         if (operationTwo == Scissor) {
-            return Won;
+            return Lost;
         }
     } else if (operationOne == Scissor) {
-        if (operationTwo == Paper) {
-            return Won;
+        if (operationTwo == Rock) {
+            return Lost;
         }
     }
     
     // We have exhausted all posibilities so we know we win.
-    return Lost;
+    return Won;
 }
 
 void printRoundResult(Result result, Operation userOp, Operation computerOp, int roundNumber, int playerWon, int computerWon, int numTies) {
