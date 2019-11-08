@@ -17,37 +17,37 @@ using namespace std;
  a buyer gets depends on the amount he shops for.
  */
 
-void printList(vector<int> vec);
+void printList(vector<int> *vec);
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     
-    vector<int> intList;
+    vector<int> *intList = new vector<int>();
     
-    cout << "the list is initialized empty, so its size is: " << intList.size() << endl;
+    cout << "the list is initialized empty, so its size is: " << intList->size() << endl;
     
-    intList.push_back(7);
-    intList.push_back(5);
-    intList.push_back(3);
+    intList->push_back(7);
+    (*intList).push_back(5);
+    intList->push_back(3);
     
     cout << "After initialization" << endl;
     printList(intList);
     
     // Inserts the value -10 at index 1
-    intList.insert(intList.begin() + 1, -10);
+    intList->insert(intList->begin() + 1, -10);
     
     cout << "After inster" << endl;
     printList(intList);
     
     // Removes the value at index 0
-    intList.erase(intList.begin());
+    intList->erase(intList->begin());
     
     cout << "After erase" << endl;
     printList(intList);
     
-    intList.push_back(-20);
+    intList->push_back(-20);
     // Will remove the indexes from 0 to 2
-    intList.erase(intList.begin(), intList.begin() + 2);
+    intList->erase(intList->begin(), intList->begin() + 2);
     
     cout << "after range erase" << endl;
     printList(intList);
@@ -57,11 +57,13 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-void printList(vector<int> vec) {
+void printList(vector<int> *vec) {
     
-    for (int i = 0; i < vec.size(); i++) {
+    vector<int> list = *vec;
+    
+    for (int i = 0; i < list.size(); i++) {
         
-        cout << "value at index: " << i << " is: " << vec[i] << endl;
+        cout << "value at index: " << i << " is: " << list[i] << endl;
         
     }
     
