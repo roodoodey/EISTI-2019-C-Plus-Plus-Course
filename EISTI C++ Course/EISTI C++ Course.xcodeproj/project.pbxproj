@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E5692902358C47D004E3DE3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E56928F2358C47D004E3DE3 /* main.cpp */; };
+		4E82E37023758B0C00972124 /* RockOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E82E36E23758B0C00972124 /* RockOperation.cpp */; };
 		4ECA14772363130E00D9971E /* Operation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA14752363130E00D9971E /* Operation.cpp */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,8 @@
 /* Begin PBXFileReference section */
 		4E56928C2358C47D004E3DE3 /* EISTI C++ Course */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "EISTI C++ Course"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E56928F2358C47D004E3DE3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4E82E36E23758B0C00972124 /* RockOperation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RockOperation.cpp; sourceTree = "<group>"; };
+		4E82E36F23758B0C00972124 /* RockOperation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RockOperation.hpp; sourceTree = "<group>"; };
 		4ECA14752363130E00D9971E /* Operation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Operation.cpp; sourceTree = "<group>"; };
 		4ECA14762363130E00D9971E /* Operation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Operation.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +66,8 @@
 				4E56928F2358C47D004E3DE3 /* main.cpp */,
 				4ECA14762363130E00D9971E /* Operation.hpp */,
 				4ECA14752363130E00D9971E /* Operation.cpp */,
+				4E82E36F23758B0C00972124 /* RockOperation.hpp */,
+				4E82E36E23758B0C00972124 /* RockOperation.cpp */,
 			);
 			path = "EISTI C++ Course";
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			files = (
 				4E5692902358C47D004E3DE3 /* main.cpp in Sources */,
 				4ECA14772363130E00D9971E /* Operation.cpp in Sources */,
+				4E82E37023758B0C00972124 /* RockOperation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@
  Static methods
  */
 
-OperationType Operation::operationType(std::string opTypeString) {
+OperationType Operation::s_operationType(std::string opTypeString) {
     
     if (opTypeString == "r" || opTypeString == "R") {
         return OperationTypeRock;
@@ -32,7 +32,7 @@ OperationType Operation::operationType(std::string opTypeString) {
     return OperationTypeUnknown;
 }
 
-OperationType Operation::randOperationType() {
+OperationType Operation::s_randOperationType() {
     
     srand( time(NULL) );
     
@@ -44,9 +44,21 @@ OperationType Operation::randOperationType() {
     
 }
 
-Operation Operation::randOperation() {
+Operation Operation::s_randOperation() {
     
-    return Operation( Operation::randOperationType() );
+    return Operation( Operation::s_randOperationType() );
+}
+
+void Operation::s_printResult(OperationResult res) {
+    using namespace std;
+    if (res == OperationResultWon) {
+        cout << "You won! Yayyy!" << endl;
+    } else if (res == OperationResultLost) {
+        cout << "You Lost! Better luck next time :)" << endl;
+    } else if (res == OperationResultTie) {
+        cout << "It's a tie!" << endl;
+    }
+    
 }
 
 /*
@@ -58,7 +70,7 @@ Operation::Operation() {
 }
 
 Operation::Operation(std::string opString) {
-    this->type = Operation::operationType(opString);
+    this->type = Operation::s_operationType(opString);
 }
 
 Operation::Operation(OperationType type) {
@@ -106,22 +118,7 @@ void Operation::printShortOperation() {
     
 }
 
-void Operation::printResult(Operation op) {
-    
-    using namespace std;
-    
-    OperationResult res = won(op);
-    if (res == OperationResultWon) {
-        cout << "You won! Yayyy!" << endl;
-    } else if (res == OperationResultLost) {
-        cout << "You Lost! Better luck next time :)" << endl;
-    } else if (res == OperationResultTie) {
-        cout << "It's a tie!" << endl;
-    }
-    
-}
-
-OperationResult Operation::won(Operation op) {
+OperationResult Operation::result(Operation op) {
     
     if (type == OperationTypeUnknown || op.type == OperationTypeUnknown) {
         // We should thrown an error
@@ -170,4 +167,14 @@ OperationResult Operation::won(Operation op) {
     }
     
     return OperationResultWon;
+}
+
+void Operation::printResult(OperationResult res) {
+    
+    return Operation::s_printResult(res);
+}
+
+OperationType Operation::getType() {
+    
+    return this->type;
 }

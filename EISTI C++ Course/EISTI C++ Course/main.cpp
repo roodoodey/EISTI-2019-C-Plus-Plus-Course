@@ -54,8 +54,8 @@ int main(int argc, const char * argv[]) {
         roundNumber++;
         
         Operation userOp = userOperation();
-        Operation computerOp = Operation::randOperation();
-        OperationResult userWon = userOp.won(computerOp);
+        Operation computerOp = Operation::s_randOperation();
+        OperationResult userWon = userOp.result(computerOp);
         
         // Create a datapoint for the new round
         RoundHistory dataPoint = createHistoryDataPoint(userOp, computerOp, userWon);
@@ -114,7 +114,7 @@ Operation userOperation() {
     cin >> stringOperation;
     cin.ignore();
     
-    OperationType type = Operation::operationType(stringOperation);
+    OperationType type = Operation::s_operationType(stringOperation);
     if (type != OperationTypeUnknown) {
         return Operation(type);
     }
@@ -133,7 +133,7 @@ void printRoundResult(vector<RoundHistory> vec, int roundNumber) {
     cout << " vs. ";
     lastRound.computerOperation.printOperation();
     cout << ". ";
-    lastRound.userOperation.printResult( lastRound.computerOperation );
+    lastRound.userOperation.printResult( lastRound.userResult );
     cout << endl;
     
     // Print stats with other functions.

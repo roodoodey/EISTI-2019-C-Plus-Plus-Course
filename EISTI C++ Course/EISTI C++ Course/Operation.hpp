@@ -51,32 +51,34 @@ public:
      This is a static method which means we can invoke it without having to create
      An operation object. This will give us the operation type from a string.
      */
-    static OperationType operationType(std::string opString);
+    static OperationType s_operationType(std::string opString);
     
-    static OperationType randOperationType();
+    static OperationType s_randOperationType();
     
-    static Operation randOperation();
+    static Operation s_randOperation();
+    
+    static void s_printResult(OperationResult res);
     
     /*
      Checks whether the current operation wins against the passed in operation.
      */
-    OperationResult won(Operation op);
+    virtual OperationResult result(Operation op);
     
     /*
      Prints out the name of the current operation on the format: Paper, Rock, etc.
      */
-    void printOperation();
+    virtual void printOperation();
     
     /*
      Prints out the short name of the current operation on the format: p/p for paper, r/R for Rock, etc.
      */
-    void printShortOperation();
+    virtual void printShortOperation();
     
-    /**
-     Prints a message based on the result.
-     */
-    void printResult(Operation op);
+    void printResult(OperationResult res);
     
+    OperationType getType();
+    
+protected:
     /*
      The type of operation whether it is a rock, paper, scissor.
      */
