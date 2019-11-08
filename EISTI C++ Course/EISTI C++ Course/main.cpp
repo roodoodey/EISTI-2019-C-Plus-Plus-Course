@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <math.h>
+#include <vector>
 using namespace std;
 
 /*
@@ -16,50 +17,52 @@ using namespace std;
  a buyer gets depends on the amount he shops for.
  */
 
+void printList(vector<int> vec);
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     
-    // Spending in euros, no cents allowed.
-    double spending;
-    // The points the user gets based on their spending. They get 1 point for each
-    // euro they spend.
-    int pointsGained = 0;
-    // The price reducation the user gets
-    double reduction;
+    vector<int> intList;
     
-    // To make the outpout show a dot and 2 fractional characters
-    // for doubles
-    cout.setf(ios::showpoint);
-    cout.setf(ios::fixed);
-    cout.precision(2);
+    cout << "the list is initialized empty, so its size is: " << intList.size() << endl;
     
-    cout << "Input how much you are willing to spend: ";
+    intList.push_back(7);
+    intList.push_back(5);
+    intList.push_back(3);
     
-    cin >> spending;
+    cout << "After initialization" << endl;
+    printList(intList);
     
-    if (spending < 10) {
-        // If spending is less than 10 euros the user gets no price reduction.
-        // We need to set the reduction variable to 0 so it has some value.
-        reduction = 0;
-    } else if (spending >= 10 && spending <= 30) {
-        // If spending is 10 or more euros but less than or equal to 30 euros
-        // the user gets a 10% reduction.
-        reduction = spending * 0.1;
-    } else {
-        // If the user spends more than 30 euros they get a 20% reduction.
-        reduction = spending * 0.2;
-    }
+    // Inserts the value -10 at index 1
+    intList.insert(intList.begin() + 1, -10);
     
-    // By default int is rounded so we need to use a floor method to calculate the
-    // number of points the user gained
-    pointsGained += floor(spending);
+    cout << "After inster" << endl;
+    printList(intList);
+    
+    // Removes the value at index 0
+    intList.erase(intList.begin());
+    
+    cout << "After erase" << endl;
+    printList(intList);
+    
+    intList.push_back(-20);
+    // Will remove the indexes from 0 to 2
+    intList.erase(intList.begin(), intList.begin() + 2);
+    
+    cout << "after range erase" << endl;
+    printList(intList);
     
     
-    cout << "The user spent: " << spending << endl;
-    cout << "He got a reduction worth: " << reduction << endl;
-    cout << "The user paid: " << spending - reduction << endl;
-    cout << "And gained " << pointsGained << " points" << endl;
     
     return 0;
+}
+
+void printList(vector<int> vec) {
+    
+    for (int i = 0; i < vec.size(); i++) {
+        
+        cout << "value at index: " << i << " is: " << vec[i] << endl;
+        
+    }
+    
 }
