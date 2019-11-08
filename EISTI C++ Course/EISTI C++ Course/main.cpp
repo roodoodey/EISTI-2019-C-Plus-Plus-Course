@@ -47,7 +47,7 @@ void printOp(Operation op);
 void printResult(Result result);
 
 /* Copies the ctor passed in and prints the round number. */
-void printRoundResult(vector<RoundHistory> vec, int roundNumber);
+void printRoundResult(vector<RoundHistory> vec);
 double percentage(double valueOne, double valueTwo);
 
 /** Creates a round History Struct element **/
@@ -60,8 +60,6 @@ int main(int argc, const char * argv[]) {
     
     // Initialize the random generator
     srand(time(NULL));
-
-    int roundNumber = 0;
     
     // print the rules at the beginning
     printRules();
@@ -72,9 +70,6 @@ int main(int argc, const char * argv[]) {
     vector<RoundHistory> history;
     
     do {
-        
-        // Increment the round Number so we start at 1
-        roundNumber++;
         
         Operation userOp = userOperation();
         Operation computerOp = computerOperation();
@@ -87,7 +82,7 @@ int main(int argc, const char * argv[]) {
         history.push_back(dataPoint);
         
         cout << endl;
-        printRoundResult(history, roundNumber);
+        printRoundResult(history);
         
     } while ( playAgain() == true );
     
@@ -201,11 +196,11 @@ Result won(Operation operationOne, Operation operationTwo) {
     return Won;
 }
 
-void printRoundResult(vector<RoundHistory> vec, int roundNumber) {
+void printRoundResult(vector<RoundHistory> vec) {
     
-    const RoundHistory lastRound = vec[roundNumber - 1];
+    const RoundHistory lastRound = vec[vec.size() - 1];
     
-    cout << "Round number: " << roundNumber << endl;
+    cout << "Round number: " << vec.size() << endl;
     printOp(lastRound.userOperation);
     cout << " vs. ";
     printOp(lastRound.computerOperation);
@@ -214,9 +209,9 @@ void printRoundResult(vector<RoundHistory> vec, int roundNumber) {
     cout << endl;
     
     // Print stats with other functions.
-    cout << "The user win percentage: " << percentage(numUserResults(vec, Won), roundNumber) << "%" << endl;
-    cout << "The computer win percentage: " << percentage(numUserResults(vec, Lost), roundNumber) << "%" << endl;
-    cout << "Number of ties: " << percentage(numUserResults(vec, Tie), roundNumber) << "%" << endl;
+    cout << "The user win percentage: " << percentage(numUserResults(vec, Won), (int)vec.size()) << "%" << endl;
+    cout << "The computer win percentage: " << percentage(numUserResults(vec, Lost), (int)vec.size()) << "%" << endl;
+    cout << "Number of ties: " << percentage(numUserResults(vec, Tie), (int)vec.size()) << "%" << endl;
     
 }
 
