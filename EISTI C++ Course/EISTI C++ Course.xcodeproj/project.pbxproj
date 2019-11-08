@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		4E5692902358C47D004E3DE3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E56928F2358C47D004E3DE3 /* main.cpp */; };
 		4E82E37023758B0C00972124 /* RockOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E82E36E23758B0C00972124 /* RockOperation.cpp */; };
+		4E82E375237596A800972124 /* PaperOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E82E373237596A800972124 /* PaperOperation.cpp */; };
+		4E82E378237596B400972124 /* ScissorOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E82E376237596B400972124 /* ScissorOperation.cpp */; };
+		4E82E37B237596C400972124 /* SpockOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E82E379237596C400972124 /* SpockOperation.cpp */; };
+		4E82E37E237596CC00972124 /* LizardOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E82E37C237596CC00972124 /* LizardOperation.cpp */; };
 		4ECA14772363130E00D9971E /* Operation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4ECA14752363130E00D9971E /* Operation.cpp */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +33,14 @@
 		4E56928F2358C47D004E3DE3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		4E82E36E23758B0C00972124 /* RockOperation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RockOperation.cpp; sourceTree = "<group>"; };
 		4E82E36F23758B0C00972124 /* RockOperation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RockOperation.hpp; sourceTree = "<group>"; };
+		4E82E373237596A800972124 /* PaperOperation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PaperOperation.cpp; sourceTree = "<group>"; };
+		4E82E374237596A800972124 /* PaperOperation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PaperOperation.hpp; sourceTree = "<group>"; };
+		4E82E376237596B400972124 /* ScissorOperation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScissorOperation.cpp; sourceTree = "<group>"; };
+		4E82E377237596B400972124 /* ScissorOperation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ScissorOperation.hpp; sourceTree = "<group>"; };
+		4E82E379237596C400972124 /* SpockOperation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpockOperation.cpp; sourceTree = "<group>"; };
+		4E82E37A237596C400972124 /* SpockOperation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpockOperation.hpp; sourceTree = "<group>"; };
+		4E82E37C237596CC00972124 /* LizardOperation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LizardOperation.cpp; sourceTree = "<group>"; };
+		4E82E37D237596CC00972124 /* LizardOperation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LizardOperation.hpp; sourceTree = "<group>"; };
 		4ECA14752363130E00D9971E /* Operation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Operation.cpp; sourceTree = "<group>"; };
 		4ECA14762363130E00D9971E /* Operation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Operation.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,12 +76,36 @@
 			isa = PBXGroup;
 			children = (
 				4E56928F2358C47D004E3DE3 /* main.cpp */,
-				4ECA14762363130E00D9971E /* Operation.hpp */,
-				4ECA14752363130E00D9971E /* Operation.cpp */,
-				4E82E36F23758B0C00972124 /* RockOperation.hpp */,
-				4E82E36E23758B0C00972124 /* RockOperation.cpp */,
+				4E82E3712375967C00972124 /* Base Class */,
+				4E82E3722375968C00972124 /* Subclasses */,
 			);
 			path = "EISTI C++ Course";
+			sourceTree = "<group>";
+		};
+		4E82E3712375967C00972124 /* Base Class */ = {
+			isa = PBXGroup;
+			children = (
+				4ECA14762363130E00D9971E /* Operation.hpp */,
+				4ECA14752363130E00D9971E /* Operation.cpp */,
+			);
+			path = "Base Class";
+			sourceTree = "<group>";
+		};
+		4E82E3722375968C00972124 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				4E82E36F23758B0C00972124 /* RockOperation.hpp */,
+				4E82E36E23758B0C00972124 /* RockOperation.cpp */,
+				4E82E374237596A800972124 /* PaperOperation.hpp */,
+				4E82E373237596A800972124 /* PaperOperation.cpp */,
+				4E82E377237596B400972124 /* ScissorOperation.hpp */,
+				4E82E376237596B400972124 /* ScissorOperation.cpp */,
+				4E82E37A237596C400972124 /* SpockOperation.hpp */,
+				4E82E379237596C400972124 /* SpockOperation.cpp */,
+				4E82E37D237596CC00972124 /* LizardOperation.hpp */,
+				4E82E37C237596CC00972124 /* LizardOperation.cpp */,
+			);
+			path = Subclasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +164,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E82E37B237596C400972124 /* SpockOperation.cpp in Sources */,
+				4E82E375237596A800972124 /* PaperOperation.cpp in Sources */,
 				4E5692902358C47D004E3DE3 /* main.cpp in Sources */,
 				4ECA14772363130E00D9971E /* Operation.cpp in Sources */,
 				4E82E37023758B0C00972124 /* RockOperation.cpp in Sources */,
+				4E82E378237596B400972124 /* ScissorOperation.cpp in Sources */,
+				4E82E37E237596CC00972124 /* LizardOperation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

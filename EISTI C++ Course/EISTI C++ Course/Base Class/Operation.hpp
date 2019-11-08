@@ -53,8 +53,14 @@ public:
      */
     static OperationType s_operationType(std::string opString);
     
+    /**
+        Selects a random operation type from the possible operation types in the enum.
+     */
     static OperationType s_randOperationType();
     
+    /**
+        Crreates a random Operation class with the appropriate operation type and subclass.
+     */
     static Operation s_randOperation();
     
     static void s_printResult(OperationResult res);

@@ -46,6 +46,11 @@ OperationType Operation::s_randOperationType() {
 
 Operation Operation::s_randOperation() {
     
+    OperationType t = Operation::s_randOperationType();
+    if (t == OperationTypeRock) {
+        
+    }
+    
     return Operation( Operation::s_randOperationType() );
 }
 
