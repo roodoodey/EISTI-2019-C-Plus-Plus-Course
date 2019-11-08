@@ -7,7 +7,6 @@
 //
 
 #include "RockOperation.hpp"
-#include "Operation.hpp"
 #include <iostream>
 
 RockOperation::RockOperation() {

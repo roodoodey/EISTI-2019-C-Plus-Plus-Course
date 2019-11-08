@@ -7,3 +7,31 @@
 //
 
 #include "PaperOperation.hpp"
+#include <iostream>
+
+PaperOperation::PaperOperation() {
+    
+    type = OperationTypePaper;
+    
+}
+
+void PaperOperation::printOperation() {
+    std::cout << "Paper";
+}
+
+void PaperOperation::printShortOperation() {
+    std::cout << "(p/P)";
+}
+
+OperationResult PaperOperation::result(Operation opponentOp) {
+    
+    OperationType t = opponentOp.getType();
+    
+    if (t == OperationTypePaper) {
+        return OperationResultTie;
+    } else if (t == OperationTypeScissors || t == OperationTypeLizard) {
+        return OperationResultLost;
+    }
+    
+    return OperationResultWon;
+}

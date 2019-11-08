@@ -33,21 +33,6 @@ class Operation {
 public:
     
     /*
-     Default constructor creates the Operation with type of rock.
-     */
-    Operation();
-    
-    /*
-     Constructor for an operation where we take a string to create the class.
-     */
-    Operation(std::string opString);
-    
-    /*
-     Constructor where we use the operation type to create the operation.
-     */
-    Operation(OperationType type);
-    
-    /*
      This is a static method which means we can invoke it without having to create
      An operation object. This will give us the operation type from a string.
      */
@@ -64,6 +49,21 @@ public:
     static Operation s_randOperation();
     
     static void s_printResult(OperationResult res);
+    
+    /*
+     Default constructor creates the Operation with type of rock.
+     */
+    Operation();
+    
+    /*
+     Constructor for an operation where we take a string to create the class.
+     */
+    Operation(std::string opString);
+    
+    /*
+     Constructor where we use the operation type to create the operation.
+     */
+    Operation(OperationType type);
     
     /*
      Checks whether the current operation wins against the passed in operation.
