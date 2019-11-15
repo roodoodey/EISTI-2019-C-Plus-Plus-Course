@@ -11,44 +11,37 @@
 #include <vector>
 using namespace std;
 
-/*
- In this program we will look at input and multiway if, else if,
- and else statements. We will simulate a shop where the reducation
- a buyer gets depends on the amount he shops for.
- */
-
-void printList(vector<int> vec);
+bool isPrime(int value);
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     
-    //int array[3] = { 1, 2, 3};
+    cout << "This program checks whether a given value is a prime number." << endl;
+    cout << "Input your number: ";
     
-    int *array;
-    cout << "How many items in your list?" << endl;
+    int number;
+    cin >> number;
     
-    int arraySize;
-    cin >> arraySize;
-    
-    array = new int[arraySize];
-    
-    for (int i = 0; i < arraySize; i++) {
-        int input;
-        cout << "input item at index " << i;
-        cin >> input;
-        array[i] = input;
+    if (isPrime(number)) {
+        cout << "The number " << number << " is a prime number" << endl;
+    } else {
+        cout << "The number is not a prime number";
     }
     
-    delete [] array;
-    
-    array = new int[arraySize];
     
     
     return 0;
 }
 
-void printList(int *array, int size) {
+bool isPrime(int value) {
     
+    int minValue = sqrt(value);
+
+    for (int i = 2; i < minValue; i++) {
+        if (value % i == 0) {
+            return false;
+        }
+    }
     
-    
+    return true;
 }
