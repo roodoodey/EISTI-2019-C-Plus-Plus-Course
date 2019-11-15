@@ -22,47 +22,33 @@ void printList(vector<int> vec);
 int main(int argc, const char * argv[]) {
     // insert code here...
     
-    vector<int> intList;
+    //int array[3] = { 1, 2, 3};
     
-    cout << "the list is initialized empty, so its size is: " << intList.size() << endl;
+    int *array;
+    cout << "How many items in your list?" << endl;
     
-    intList.push_back(7);
-    intList.push_back(5);
-    intList.push_back(3);
+    int arraySize;
+    cin >> arraySize;
     
-    cout << "After initialization" << endl;
-    printList(intList);
+    array = new int[arraySize];
     
-    // Inserts the value -10 at index 1
-    intList.insert(intList.begin() + 1, -10);
+    for (int i = 0; i < arraySize; i++) {
+        int input;
+        cout << "input item at index " << i;
+        cin >> input;
+        array[i] = input;
+    }
     
-    cout << "After inster" << endl;
-    printList(intList);
+    delete [] array;
     
-    // Removes the value at index 0
-    intList.erase(intList.begin());
-    
-    cout << "After erase" << endl;
-    printList(intList);
-    
-    intList.push_back(-20);
-    // Will remove the indexes from 0 to 2
-    intList.erase(intList.begin(), intList.begin() + 2);
-    
-    cout << "after range erase" << endl;
-    printList(intList);
-    
+    array = new int[arraySize];
     
     
     return 0;
 }
 
-void printList(vector<int> vec) {
+void printList(int *array, int size) {
     
-    for (int i = 0; i < vec.size(); i++) {
-        
-        cout << "value at index: " << i << " is: " << vec[i] << endl;
-        
-    }
+    
     
 }
