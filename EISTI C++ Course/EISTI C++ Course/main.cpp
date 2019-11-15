@@ -38,10 +38,14 @@ bool isPrime(int value) {
     int minValue = sqrt(value);
 
     for (int i = 2; i < minValue; i++) {
+        // If we find a value which can divide our value
+        // we then know it is not a prime number
         if (value % i == 0) {
             return false;
         }
     }
     
+    // If no value up to sqrt(value) can divide our number
+    // we know that the numbe ris a prime number.
     return true;
 }
