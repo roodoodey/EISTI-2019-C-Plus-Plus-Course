@@ -69,8 +69,10 @@ int main(int argc, const char * argv[]) {
 
 void printList(vector<int> vec) {
     
+    // TUse the size method on the vector list which will send back the size of the array which represents the number of values in the list.
     for (int i = 0; i < vec.size(); i++) {
         
+        // We use the [] subscript to print the value.
         cout << "value at index: " << i << " is: " << vec[i] << endl;
         
     }
