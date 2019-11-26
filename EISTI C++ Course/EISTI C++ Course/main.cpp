@@ -11,12 +11,10 @@
 #include <vector>
 using namespace std;
 
-/*
- In this program we will look at input and multiway if, else if,
- and else statements. We will simulate a shop where the reducation
- a buyer gets depends on the amount he shops for.
+/**
+ This method takes a vector by references and prints all its values to the console.
+ We send the list by reference so that it is not copied to conserve memory and system load.
  */
-
 void printList(vector<int> *vec);
 
 int main(int argc, const char * argv[]) {
