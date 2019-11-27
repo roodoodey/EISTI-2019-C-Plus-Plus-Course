@@ -14,31 +14,81 @@ using namespace std;
 
 
 /**
- Class enumerators are slightly different from normal enumerators.
- They are not integers and can only be compard with Operation enumerators.
+ An Enumerator which identifies which operation we used.
  */
 typedef enum {
+    // Rock defaults to value 0
     Rock,
+    // Paper defaults to value 1
     Paper,
+    // Scissor defaults to value 2, etc.
     Scissor,
     Lizard,
     Spock
 } Operation;
 
+/**
+ An enumerator which identifies the result of two operations.
+ */
 typedef enum {
+    // Won defaults to 0
     Won,
-    Tie,
+    // Tie is set to 3
+    Tie=3,
+    // Lost is set to 4, because Lost is set to 3.
     Lost
 } Result;
 
+/**
+ A recursive method which asks the user after each round whether they want to play again.
+ It returns true if they want to play again and false if they do not. I
+ 
+ It is a recursive method which keeps calling itself until there is a valid input from the user.
+ */
 bool playAgain();
+/**
+ Uses cout to print the rules of the game in the console to the user on startup.
+ */
 void printRules();
+
+/**
+ Asks the user which operation they want to use. If they use an unrecognized operation, it will recursively
+ ask the user for an input until they give a valid one.
+ */
 Operation userOperation();
+
+/**
+ This method creates a list of all of the operations, and then picks on operation at random
+ for the computer which is then returned.
+ */
 Operation computerOperation();
+
+/**
+ This method takes in two operations, and gives back the result based on the first operation.
+ It sends the result based on the first operation. So if operation one is a scissor and operation
+ two is a rock, the result will be Lost.
+ */
 Result won(Operation operationOne, Operation operationTwo);
+
+/**
+ This method uses cout to print the name of the operatino to the console. So operation
+ Rock prints Rock to the console.
+ */
 void printOp(Operation op);
+
+/**
+ This method uses cout to print a message based on the result.
+ */
 void printResult(Result result);
+
+/**
+ Prints the result of the round with the minimal statistics.
+ */
 void printRoundResult(Result result, Operation userOp, Operation computerOp, int roundResult, int playerWon, int computerWon, int numTies);
+
+/**
+ Calculates the percentage of value one divided by value two.
+ */
 double percentage(double valueOne, double valueTwo);
 
 int main(int argc, const char * argv[]) {
@@ -46,9 +96,11 @@ int main(int argc, const char * argv[]) {
     
     // Initialize the random generator
     srand(time(NULL));
-
+    
+    // We start with round Number One
     int roundNumber = 1;
     
+    // Variables for our statistics
     int playerWon = 0;
     int computerWon = 0;
     int numTies = 0;
@@ -56,13 +108,19 @@ int main(int argc, const char * argv[]) {
     // print the rules at the beginning
     printRules();
     
+    // Runs the do while loop until the player does not want to play anymore
     do {
         
+        // Get the user operation from console input
         Operation userOp = userOperation();
+        
+        // Get the computer operation at random
         Operation computerOp = computerOperation();
         
         // Checks if the user won
         Result userWon = won(userOp, computerOp);
+        
+        // Increment the statistics based on the result
         if (userWon == Tie) {
             numTies++;
         } else if (userWon == Won) {
@@ -71,11 +129,16 @@ int main(int argc, const char * argv[]) {
             computerWon++;
         }
         
+        // Added an end line to make the console output clearer
         cout << endl;
+        
+        // Print the round result, with the statistics to the user.
         printRoundResult(userWon, userOp, computerOp, roundNumber, playerWon, computerWon, numTies);
         
+        // Increment the round number at the end.
         roundNumber++;
         
+        // We ask the player if he wants to play again or not.
     } while ( playAgain() == true );
     
     
