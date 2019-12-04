@@ -7,6 +7,10 @@
 //
 
 #include "BankAccount.hpp"
+#include <iostream>
+#include <math.h>
+
+using namespace std;
 
 BankAccount::BankAccount() {
     this->amount = 0;
@@ -34,4 +38,17 @@ int BankAccount::getInterests() {
 
 void BankAccount::setInterests(int interests) {
     this->interests = interests;
+}
+
+double BankAccount::getRate() {
+    
+    double rate = amount / 100.0 * (double)interests / 100.0;
+    return floor(rate);
+    
+}
+
+void BankAccount::update() {
+    
+    amount += getRate();
+    
 }

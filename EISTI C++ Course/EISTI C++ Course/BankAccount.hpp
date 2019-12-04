@@ -27,11 +27,21 @@ public:
     int getInterests();
     void setInterests(int interests);
     
+    /**
+    @description Gets the rate for the entire year for the bank account. The value is represented as 1003 = 10.03 euros. 
+     */
+    double getRate();
+    
+    /**
+     @description Adds the interests to the bank account at the end of the year.
+     */
+    void update();
+    
 private:
     
     /**
      @description The amount will be defined as a whole and cents will be represented as
-     The first two placeholders. So a value of 1003 = 10.03 euros. 
+     The first two placeholders. So a value of 1003 = 10.03 euros.
      */
     long int amount;
 

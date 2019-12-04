@@ -15,10 +15,6 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     // insert code here...
     
-    BankAccount account = BankAccount();
-    
-    cout << "account balance is " << account.getAmount() << endl;
-    
     long int amount;
     int interests;
     
@@ -30,6 +26,10 @@ int main(int argc, const char * argv[]) {
     
     BankAccount accountTwo = BankAccount(amount, interests);
     cout << "My account is " << accountTwo.getAmount() << endl;
+    
+    cout << "Our rate is: " << accountTwo.getRate() << endl;
+    accountTwo.update();
+    cout << "Our account amount is " << accountTwo.getAmount() << endl;
     
     return 0;
 }
