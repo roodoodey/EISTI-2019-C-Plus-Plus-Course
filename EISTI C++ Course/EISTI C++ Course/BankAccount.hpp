@@ -19,23 +19,27 @@ public:
     /* Constructor **/
     BankAccount();
     
-    BankAccount(long int amount, int cents, double interests);
+    BankAccount(long int amount, int interests);
     
     long int getAmount();
     void setAmount(long int amount);
     
-    int getCents();
-    void setCents(int cents);
-    
-    double getInterests();
-    void setInterests(double interests);
+    int getInterests();
+    void setInterests(int interests);
     
 private:
     
+    /**
+     @description The amount will be defined as a whole and cents will be represented as
+     The first two placeholders. So a value of 1003 = 10.03 euros. 
+     */
     long int amount;
-    int cents;
 
-    double interests;
+    /**
+     @description The interests will be defined as a percentage where 103, will be 1.03 percent
+     interest rate.
+     */
+    int interests;
     
 };
 

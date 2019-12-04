@@ -10,13 +10,11 @@
 
 BankAccount::BankAccount() {
     this->amount = 0;
-    this->cents = 0;
     this->interests = 0;
 }
 
-BankAccount::BankAccount(long int amount, int cents, double interests) {
+BankAccount::BankAccount(long int amount, int interests) {
     this->amount = amount;
-    this->cents = cents;
     this->interests = interests;
 }
 
@@ -29,20 +27,11 @@ void BankAccount::setAmount(long int amount) {
     this->amount = amount;
 }
 
-int BankAccount::getCents() {
-    
-    return cents;
-}
-
-void BankAccount::setCents(int cents) {
-    this->cents = cents;
-}
-
-double BankAccount::getInterests() {
+int BankAccount::getInterests() {
     
     return interests;
 }
 
-void BankAccount::setInterests(double interests) {
+void BankAccount::setInterests(int interests) {
     this->interests = interests;
 }

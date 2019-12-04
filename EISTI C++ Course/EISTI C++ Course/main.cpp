@@ -20,19 +20,15 @@ int main(int argc, const char * argv[]) {
     cout << "account balance is " << account.getAmount() << endl;
     
     long int amount;
-    int cents;
-    double interests;
+    int interests;
     
     cout << "Amount: ";
     cin >> amount;
     
-    cout << "Cents: ";
-    cin >> cents;
-    
     cout << "Interests: ";
     cin >> interests;
     
-    BankAccount accountTwo = BankAccount(amount, cents, interests);
+    BankAccount accountTwo = BankAccount(amount, interests);
     cout << "My account is " << accountTwo.getAmount() << endl;
     
     return 0;
