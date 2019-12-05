@@ -29,10 +29,6 @@ int main(int argc, const char * argv[]) {
     
     cout << "bank account " << account.getAmount() << " interests: " << account.getInterest() << endl;
     
-    BankAccount accountTwo = BankAccount();
-    
-    cout << "second account: " << accountTwo.getAmount() << " interests: " << accountTwo.getInterest() << endl;
-    
     return 0;
 }
 

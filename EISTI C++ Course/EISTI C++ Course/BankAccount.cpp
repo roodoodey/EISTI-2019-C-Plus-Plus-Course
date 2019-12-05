@@ -8,11 +8,6 @@
 
 #include "BankAccount.hpp"
 
-BankAccount::BankAccount() {
-    amount = 0;
-    interest = 125;
-}
-
 BankAccount::BankAccount(long int amount, long int interest) {
     this->amount = amount;
     this->interest = interest;
