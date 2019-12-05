@@ -11,19 +11,8 @@
 #include "BankAccount.hpp"
 using namespace std;
 
-typedef struct {
-    long int amount;
-    long int interests;
-} StructBankAccount;
-
-double calculsInterests(StructBankAccount acc);
-
 int main(int argc, const char * argv[]) {
     // insert code here...
-    
-    StructBankAccount structAccount;
-    structAccount.amount = 0;
-    structAccount.interests = 0;
     
     BankAccount accountTwo = BankAccount(1000, 200);
     
@@ -34,11 +23,6 @@ int main(int argc, const char * argv[]) {
     accountTwo.update();
     
     cout << "Second account after intest update: " << accountTwo.getAmount() << endl;
-    
-    return 0;
-}
-
-double calculsInterests(StructBankAccount acc) {
     
     return 0;
 }
