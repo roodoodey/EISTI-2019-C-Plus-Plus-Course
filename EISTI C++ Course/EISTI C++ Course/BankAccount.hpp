@@ -29,6 +29,11 @@ public:
      */
     long int getRate();
     
+    /**
+     Will use the get rate function to calculate the interest rate and add it to the bank amount.
+     */
+    void update();
+    
 private:
     
     /**

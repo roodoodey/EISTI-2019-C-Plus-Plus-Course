@@ -7,7 +7,7 @@
 //
 
 #include "BankAccount.hpp"
-#include <Math.h>
+#include <math.h>
 
 BankAccount::BankAccount() {
     amount = 0;
@@ -45,4 +45,10 @@ long int BankAccount::getRate() {
     long int rate = floor((double)amount / 100 * (double)interest / 100);
     
     return rate;
+}
+
+void BankAccount::update() {
+    
+    amount += getRate();
+    
 }

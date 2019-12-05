@@ -25,13 +25,15 @@ int main(int argc, const char * argv[]) {
     structAccount.amount = 0;
     structAccount.interests = 0;
     
-    BankAccount account = BankAccount(0, 10);
-    
     BankAccount accountTwo = BankAccount(1000, 200);
     
     cout << "second account: " << accountTwo.getAmount() << " interests: " << accountTwo.getInterest() << endl;
     
     cout << "second account interest rate is: " << accountTwo.getRate() << endl;
+    
+    accountTwo.update();
+    
+    cout << "Second account after intest update: " << accountTwo.getAmount() << endl;
     
     return 0;
 }
