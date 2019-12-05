@@ -66,6 +66,30 @@ void BankAccount::update() {
 
 void BankAccount::output(std::ostream &stream) {
     
-    stream << "Account name: " << name << " Balance: " << amount << " Interest rate: " << interest << std::endl;
+    stream << "Account name: " << name << " Balance: ";
+    outputEuros(amount, stream);
+    stream << " Interests: ";
+    outputPercentage(interest, stream);
+    stream << std::endl;
+    
+}
+
+void BankAccount::outputEuros(long int amount, std::ostream &stream) {
+    
+    // The whole numbers in the euro format so this will represent 10 in 1030 value of the amount.
+    long int wholeNumbers = floor( (double)amount / 100 );
+    // The decimal placing of the amount so this will represent 30 in the 1030 value of the amount.
+    int decimal = amount % 100;
+    
+    stream << wholeNumbers << "." << decimal << " Euros";
+    
+}
+
+void BankAccount::outputPercentage(long int percentage, std::ostream &stream) {
+    
+    long int wholePercentage = floor( (double)percentage / 100 );
+    int decimal = percentage % 100;
+    
+    stream << wholePercentage << "." << decimal << " %";
     
 }

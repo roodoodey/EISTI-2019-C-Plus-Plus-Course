@@ -21,6 +21,6 @@ int main(int argc, const char * argv[]) {
     accountTwo.update();
     
     accountTwo.output(cout);
-    
+        
     return 0;
 }

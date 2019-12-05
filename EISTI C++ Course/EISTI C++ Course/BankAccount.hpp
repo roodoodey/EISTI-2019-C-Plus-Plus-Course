@@ -44,6 +44,16 @@ public:
      */
     void output(std::ostream &stream);
     
+    /**
+     @description Takes in an amount of type 1030 which will be pretty printed as 10.30 euros to be more readily readable by the user.
+     */
+    void outputEuros(long int amount, std::ostream &stream);
+    
+    /**
+    @description Takes in a percentage of type 1030 which will be pretty printed as 10.30 % to be more readily readable by the user.
+    */
+    void outputPercentage(long int percentage, std::ostream &stream);
+    
 private:
     
     /**
