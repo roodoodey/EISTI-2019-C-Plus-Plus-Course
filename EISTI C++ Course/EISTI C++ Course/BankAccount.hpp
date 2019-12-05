@@ -15,9 +15,6 @@ class BankAccount {
     
 public:
     
-    BankAccount();
-    BankAccount(long int amount, long int interest);
-    
     long int getAmount();
     void setAmount(long int amount);
     
