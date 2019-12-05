@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E5692902358C47D004E3DE3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E56928F2358C47D004E3DE3 /* main.cpp */; };
+		4EB71BCB2399086000C5DC64 /* BankAccount.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EB71BC92399086000C5DC64 /* BankAccount.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		4E56928C2358C47D004E3DE3 /* EISTI C++ Course */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "EISTI C++ Course"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E56928F2358C47D004E3DE3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4EB71BC92399086000C5DC64 /* BankAccount.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BankAccount.cpp; sourceTree = "<group>"; };
+		4EB71BCA2399086000C5DC64 /* BankAccount.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BankAccount.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				4E56928F2358C47D004E3DE3 /* main.cpp */,
+				4EB71BCA2399086000C5DC64 /* BankAccount.hpp */,
+				4EB71BC92399086000C5DC64 /* BankAccount.cpp */,
 			);
 			path = "EISTI C++ Course";
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E5692902358C47D004E3DE3 /* main.cpp in Sources */,
+				4EB71BCB2399086000C5DC64 /* BankAccount.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
