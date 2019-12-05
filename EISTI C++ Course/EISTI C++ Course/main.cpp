@@ -27,11 +27,11 @@ int main(int argc, const char * argv[]) {
     
     BankAccount account = BankAccount(0, 10);
     
-    cout << "bank account " << account.getAmount() << " interests: " << account.getInterest() << endl;
-    
-    BankAccount accountTwo = BankAccount();
+    BankAccount accountTwo = BankAccount(1000, 200);
     
     cout << "second account: " << accountTwo.getAmount() << " interests: " << accountTwo.getInterest() << endl;
+    
+    cout << "second account interest rate is: " << accountTwo.getRate() << endl;
     
     return 0;
 }

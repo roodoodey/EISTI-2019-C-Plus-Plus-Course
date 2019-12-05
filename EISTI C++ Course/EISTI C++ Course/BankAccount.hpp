@@ -24,6 +24,11 @@ public:
     long int getInterest();
     void setInterest(long int interest);
     
+    /**
+     Will return the interests for the given year. Will be done with the same decimal context as the amount. That is 1002 = 10.02 euros.
+     */
+    long int getRate();
+    
 private:
     
     /**
