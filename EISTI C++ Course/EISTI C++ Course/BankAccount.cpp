@@ -13,12 +13,14 @@ BankAccount::BankAccount() {
     name = "Checking Account";
     amount = 0;
     interest = 125;
+    type = BankAccountTypeChecking;
 }
 
 BankAccount::BankAccount(std::string name, long int amount, long int interest) {
     this->name = name;
     this->amount = amount;
     this->interest = interest;
+    this->type = BankAccountTypeChecking;
 }
 
 std::string BankAccount::getName() {
@@ -46,6 +48,15 @@ long int BankAccount::getInterest() {
 
 void BankAccount::setInterest(long int interest) {
     this->interest = interest;
+}
+
+BankAccountType BankAccount::getType() {
+    
+    return type;
+}
+
+void BankAccount::setType(BankAccountType accountType) {
+    type = accountType;
 }
 
 long int BankAccount::getRate() {
@@ -103,5 +114,17 @@ void BankAccount::outputPercentage(long int percentage, std::ostream &stream) {
     int decimal = percentage % 100;
     
     stream << wholePercentage << "." << decimal << " %";
+    
+}
+
+void BankAccount::outputAccountType(std::ostream &stream) {
+    
+    if (getType() == BankAccountTypeChecking) {
+        stream << "Checking Account";
+    } else if (getType() == BankAccountTypeSavings) {
+        stream << "Savings Account";
+    } else {
+        stream << "Unrecognized Account Type";
+    }
     
 }

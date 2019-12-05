@@ -13,6 +13,11 @@
 #include <iostream>
 #include <string>
 
+typedef enum {
+    BankAccountTypeChecking,
+    BankAccountTypeSavings
+} BankAccountType;
+
 class BankAccount {
     
 public:
@@ -28,6 +33,9 @@ public:
     
     long int getInterest();
     void setInterest(long int interest);
+    
+    BankAccountType getType();
+    void setType(BankAccountType accountType);
     
     /**
      Will return the interests for the given year. Will be done with the same decimal context as the amount. That is 1002 = 10.02 euros.
@@ -53,6 +61,8 @@ public:
      @description Output the percentage by using the static outputPercentage method.
      */
     void outputPercentage(std::ostream &stream);
+    
+    void outputAccountType(std::ostream &stream);
     
     /**
      @description Takes in an amount of type 1030 which will be pretty printed as 10.30 euros to be more readily readable by the user.
@@ -80,6 +90,11 @@ private:
      @description 123 = 1.23%
      */
     long int interest;
+    
+    /**
+     The type of bank account we are using. By default it is a checking account.
+     */
+    BankAccountType type;
     
 };
 

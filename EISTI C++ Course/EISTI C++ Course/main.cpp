@@ -20,6 +20,7 @@ int main(int argc, const char * argv[]) {
     BankAccount accountTwo = BankAccount("Default Account", 1000, 200);
     
     accountTwo.output(cout);
+    accountTwo.outputAccountType(cout);
     
     accountTwo.update();
     
