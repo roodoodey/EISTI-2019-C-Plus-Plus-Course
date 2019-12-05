@@ -67,10 +67,22 @@ void BankAccount::update() {
 void BankAccount::output(std::ostream &stream) {
     
     stream << "Account name: " << name << " Balance: ";
-    outputEuros(amount, stream);
+    outputEuros(stream);
     stream << " Interests: ";
-    outputPercentage(interest, stream);
+    outputPercentage(stream);
     stream << std::endl;
+    
+}
+
+void BankAccount::outputEuros(std::ostream &stream) {
+    
+    BankAccount::outputEuros(amount, stream);
+    
+}
+
+void BankAccount::outputPercentage(std::ostream &stream) {
+    
+    BankAccount::outputPercentage(interest, stream);
     
 }
 

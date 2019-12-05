@@ -45,14 +45,24 @@ public:
     void output(std::ostream &stream);
     
     /**
+    @description Output the percentage by using the static outputEuros method.
+    */
+    void outputEuros(std::ostream &stream);
+    
+    /**
+     @description Output the percentage by using the static outputPercentage method.
+     */
+    void outputPercentage(std::ostream &stream);
+    
+    /**
      @description Takes in an amount of type 1030 which will be pretty printed as 10.30 euros to be more readily readable by the user.
      */
-    void outputEuros(long int amount, std::ostream &stream);
+    static void outputEuros(long int amount, std::ostream &stream);
     
     /**
     @description Takes in a percentage of type 1030 which will be pretty printed as 10.30 % to be more readily readable by the user.
     */
-    void outputPercentage(long int percentage, std::ostream &stream);
+    static void outputPercentage(long int percentage, std::ostream &stream);
     
 private:
     

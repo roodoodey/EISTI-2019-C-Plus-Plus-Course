@@ -14,6 +14,9 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     // insert code here...
     
+    BankAccount::outputPercentage(1030, cout);
+    cout << endl;
+    
     BankAccount accountTwo = BankAccount("Default Account", 1000, 200);
     
     accountTwo.output(cout);
