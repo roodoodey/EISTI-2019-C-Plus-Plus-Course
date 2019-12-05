@@ -10,13 +10,18 @@
 #define BankAccount_hpp
 
 #include <stdio.h>
+#include <iostream>
+#include <string>
 
 class BankAccount {
     
 public:
     
     BankAccount();
-    BankAccount(long int amount, long int interest);
+    BankAccount(std::string name, long int amount, long int interest);
+    
+    std::string getName();
+    void setName(std::string name);
     
     long int getAmount();
     void setAmount(long int amount);
@@ -34,7 +39,17 @@ public:
      */
     void update();
     
+    /**
+     @description This method will output the name of the bank account and the balance as well as interest rate.
+     */
+    void output(std::ostream &stream);
+    
 private:
+    
+    /**
+     @description Name of the account;
+     */
+    std::string name;
     
     /**
      @description 1003 = 10.03 euros

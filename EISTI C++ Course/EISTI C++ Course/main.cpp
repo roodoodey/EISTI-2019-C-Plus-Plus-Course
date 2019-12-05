@@ -14,15 +14,13 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     // insert code here...
     
-    BankAccount accountTwo = BankAccount(1000, 200);
+    BankAccount accountTwo = BankAccount("Default Account", 1000, 200);
     
-    cout << "second account: " << accountTwo.getAmount() << " interests: " << accountTwo.getInterest() << endl;
-    
-    cout << "second account interest rate is: " << accountTwo.getRate() << endl;
+    accountTwo.output(cout);
     
     accountTwo.update();
     
-    cout << "Second account after intest update: " << accountTwo.getAmount() << endl;
+    accountTwo.output(cout);
     
     return 0;
 }

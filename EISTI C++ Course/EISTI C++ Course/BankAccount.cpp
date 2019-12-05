@@ -10,13 +10,24 @@
 #include <math.h>
 
 BankAccount::BankAccount() {
+    name = "Checking Account";
     amount = 0;
     interest = 125;
 }
 
-BankAccount::BankAccount(long int amount, long int interest) {
+BankAccount::BankAccount(std::string name, long int amount, long int interest) {
+    this->name = name;
     this->amount = amount;
     this->interest = interest;
+}
+
+std::string BankAccount::getName() {
+    
+    return name;
+}
+
+void BankAccount::setName(std::string name) {
+    this->name = name;
 }
 
 long int BankAccount::getAmount() {
@@ -50,5 +61,11 @@ long int BankAccount::getRate() {
 void BankAccount::update() {
     
     amount += getRate();
+    
+}
+
+void BankAccount::output(std::ostream &stream) {
+    
+    stream << "Account name: " << name << " Balance: " << amount << " Interest rate: " << interest << std::endl;
     
 }
