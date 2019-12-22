@@ -14,11 +14,11 @@
 
 using namespace std;
 
-class Employee {
+class EmployeeBase {
     
 public:
-    Employee();
-    Employee(string theName, string theCompanyId, double theNetSalary);
+    EmployeeBase();
+    EmployeeBase(string theName, string theCompanyId);
     
     string getName() const;
     string getCompanyId() const;

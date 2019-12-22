@@ -9,43 +9,45 @@
 #include "EmployeeBase.hpp"
 #include <iostream>
 
-Employee::Employee() {
+EmployeeBase::EmployeeBase() {
     name = "";
     companyId = "";
+    netSalary = 0;
 }
 
-Employee::Employee(string theName, string theCompanyId, double theSalary) {
+EmployeeBase::EmployeeBase(string theName, string theCompanyId) {
     name = theName;
     companyId = theCompanyId;
-    netSalary = theSalary;
+    netSalary = 0;
 }
 
-string Employee::getName() const {
+string EmployeeBase::getName() const {
     return name;
 }
 
-string Employee::getCompanyId() const {
+string EmployeeBase::getCompanyId() const {
     return companyId;
 }
 
-double Employee::getNetSalary() const {
+double EmployeeBase::getNetSalary() const {
     return netSalary;
 }
 
-void Employee::setName(string theName) {
+void EmployeeBase::setName(string theName) {
     name = theName;
 }
 
-void Employee::setCompanyId(string theCompanyId) {
+void EmployeeBase::setCompanyId(string theCompanyId) {
     companyId = theCompanyId;
 }
 
-void Employee::setNetSalary(double theSalary) {
+void EmployeeBase::setNetSalary(double theSalary) {
     netSalary = theSalary;
 }
 
-void Employee::printPaycheck() {
+void EmployeeBase::printPaycheck() {
     
-    cout << "Calling print on an abstract class should never happen." << endl;
+    cout << "Pay the order for: "<< getName() << " company id: " << getCompanyId() << endl;
+    cout << "Salary sum: " << getNetSalary() << "$" << endl;
     
 }
